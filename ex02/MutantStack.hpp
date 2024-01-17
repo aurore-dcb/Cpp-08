@@ -47,25 +47,59 @@ class MutantStack {
             _stack.pop_back();
         }
 
-        // ajouter des iterateurs
-        // typename container_type::iterator begin() {
-        //     return stackContainer.begin();
-        // }
+        class iterator {
+            public:
+                iterator(typename std::deque<T>::iterator it) : _it(it) {}
+                iterator& operator++() {
+                    ++_it;
+                    return *this;
+                }
+                T& operator*() const {
+                    return *_it;
+                }
+                bool operator!=(const iterator& other) const {
+                    return _it != other._it;
+                }
+            private:
+                typename std::deque<T>::iterator _it;
+        };
+        
+        iterator begin() {
+            return iterator(_stack.begin());
+        }
+
+        iterator end() {
+            return iterator(_stack.end());
+        }
+
+        class const_iterator {
+            public:
+                const_iterator(typename std::deque<T>::const_iterator it) : _it(it) {}
+                const_iterator& operator++() {
+                    ++_it;
+                    return *this;
+                }
+                const T& operator*() const {
+                    return *_it;
+                }
+                bool operator!=(const const_iterator& other) const {
+                    return _it != other._it;
+                }
+            private:
+                typename std::deque<T>::const_iterator _it;
+        };
+        
+        const_iterator cbegin() const {
+            return const_iterator(_stack.begin());
+        }
+
+        const_iterator cend() const {
+            return const_iterator(_stack.end());
+        }
 
     private :
         std::deque<T> _stack;
         size_t _size;
 };
-
-
-// template< typename T >
-// std::ostream& operator<<(const std::ostream& os, const MutantStack<T>& rhs) {
-
-//     for (size_t i = 0 ; i < rhs._size ; i++) {
-//         os << "elem: " << rhs.
-//     }
-//     return os;
-// }
-
 
 #endif
