@@ -38,7 +38,6 @@ class MutantStack : public std::stack<T> {
         reverse_iterator rend() {
             return this->c.rend();
         }
-
 };
 
 #endif

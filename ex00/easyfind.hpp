@@ -12,14 +12,8 @@ typename T::iterator easyfind(T & container, int n) {
 
     typename T::iterator it = container.begin();
     typename T::iterator ite = container.end();
-    while (it != ite)
-    {
-        if (*it == n) {
-            return it;
-        }
-        it++;
-    }
-    return ite;
+    typename T::iterator res = std::find(it, ite, n);
+    return res;
 }
 
 #endif

@@ -32,7 +32,7 @@ unsigned int Span::shortestSpan(void) {
     }
     std::sort(_numbers.begin(), _numbers.end());
     int diff = _numbers[1] - _numbers[0];
-    for (int i = 0 ; i < static_cast<int>(_numbers.size()-1) ; i++) {
+    for (size_t i = 0 ; i < _numbers.size() - 1 ; i++) {
         if (_numbers[i+1] - _numbers[i] < diff)
             diff = _numbers[i+1] - _numbers[i];
     }
